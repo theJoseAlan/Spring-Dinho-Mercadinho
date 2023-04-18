@@ -1,13 +1,13 @@
-package br.com.bentinho.bentinhoMercadinho;
+package br.com.bentinho.mercadinho;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BentinhoMercadinhoApplication {
+public class BMApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BentinhoMercadinhoApplication.class, args);
+		SpringApplication.run(BMApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package br.com.bentinho.bentinhoMercadinho.domain;
+package br.com.bentinho.mercadinho.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
