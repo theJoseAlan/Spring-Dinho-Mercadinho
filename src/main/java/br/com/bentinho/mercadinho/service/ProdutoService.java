@@ -1,4 +1,8 @@
 package br.com.bentinho.mercadinho.service;
 
-public interface ProdutoService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProdutoService {
+
 }
