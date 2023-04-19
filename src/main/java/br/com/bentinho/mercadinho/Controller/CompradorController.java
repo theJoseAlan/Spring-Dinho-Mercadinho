@@ -3,8 +3,6 @@ package br.com.bentinho.mercadinho.Controller;
 import br.com.bentinho.mercadinho.entity.Comprador;
 import br.com.bentinho.mercadinho.repository.CompradorRepository;
 import br.com.bentinho.mercadinho.service.CompradorService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +16,8 @@ public class CompradorController {
 
     private CompradorService compradorService;
 
-
     private CompradorRepository compradorRepository;
 
-    @PersistenceContext
-    private EntityManager manager;
 
     private CompradorService service;
 

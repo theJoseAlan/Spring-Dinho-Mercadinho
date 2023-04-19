@@ -14,7 +14,7 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long iD;
+    private Long id;
 
     private String nome;
 
@@ -22,7 +22,6 @@ public class Produto {
 
     private Double valorUnitario;
 
-    private Double valorTotal;
 
     public String getNome() {
         return nome;
@@ -48,11 +47,4 @@ public class Produto {
         this.valorUnitario = valorUnitario;
     }
 
-    public Double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorUnitario*quantidade;
-    }
 }
