@@ -22,9 +22,6 @@ public class Comprador {
 
     private String endereco;
 
-    @OneToOne
-    private Carrinho carrinho;
-
     public Comprador(){
 
     }
