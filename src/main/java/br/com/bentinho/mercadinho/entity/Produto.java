@@ -1,9 +1,6 @@
-package br.com.bentinho.mercadinho.domain;
+package br.com.bentinho.mercadinho.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +20,7 @@ public class Produto {
     private int quantidade;
 
     private double valorUnitario;
+
 
     public Produto(){
 
