@@ -1,6 +1,6 @@
 package br.com.bentinho.mercadinho.Controller;
 
-import br.com.bentinho.mercadinho.domain.Comprador;
+import br.com.bentinho.mercadinho.entity.Comprador;
 import br.com.bentinho.mercadinho.repository.CompradorRepository;
 import br.com.bentinho.mercadinho.service.CompradorService;
 import jakarta.persistence.EntityManager;
