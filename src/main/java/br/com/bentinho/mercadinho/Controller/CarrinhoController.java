@@ -6,7 +6,7 @@ import br.com.bentinho.mercadinho.service.CarrinhoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/carrinho")
@@ -22,10 +22,9 @@ public class CarrinhoController {
         return carrinhoService.salvar(carrinho);
     }
 
-    @GetMapping("/listar")
-    public List<Carrinho> listarCarrinho(){
-
-        return carrinhoRepository.findAll();
+    @GetMapping("/{id}")
+    public Optional<Carrinho> exibir(@PathVariable Long id){
+        return carrinhoRepository.findById(id);
     }
 
 }
