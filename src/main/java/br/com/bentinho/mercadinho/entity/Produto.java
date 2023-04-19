@@ -1,9 +1,6 @@
 package br.com.bentinho.mercadinho.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +19,8 @@ public class Produto {
 
     private Double valorUnitario;
 
+    @ManyToOne
+    private Carrinho carrinho;
 
     public String getNome() {
         return nome;
@@ -47,4 +46,11 @@ public class Produto {
         this.valorUnitario = valorUnitario;
     }
 
+    public Carrinho getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(Carrinho carrinho) {
+        this.carrinho = carrinho;
+    }
 }
