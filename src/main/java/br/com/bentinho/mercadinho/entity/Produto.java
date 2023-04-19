@@ -21,7 +21,6 @@ public class Produto {
 
     private double valorUnitario;
 
-
     public Produto(){
 
     }

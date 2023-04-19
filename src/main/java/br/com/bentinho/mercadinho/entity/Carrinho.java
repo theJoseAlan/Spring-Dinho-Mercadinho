@@ -15,8 +15,6 @@ public class Carrinho {
 
     private double valorTotal;
 
-
-
     @OneToMany
     private List<Produto> produtos;
 
