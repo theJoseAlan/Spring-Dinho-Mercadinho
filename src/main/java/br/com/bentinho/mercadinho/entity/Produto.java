@@ -2,13 +2,16 @@ package br.com.bentinho.mercadinho.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Produto {
 
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,8 +22,6 @@ public class Produto {
 
     private Double valorUnitario;
 
-    @ManyToOne
-    private Carrinho carrinho;
 
     public String getNome() {
         return nome;
@@ -44,13 +45,5 @@ public class Produto {
 
     public void setValorUnitario(Double valorUnitario) {
         this.valorUnitario = valorUnitario;
-    }
-
-    public Carrinho getCarrinho() {
-        return carrinho;
-    }
-
-    public void setCarrinho(Carrinho carrinho) {
-        this.carrinho = carrinho;
     }
 }
