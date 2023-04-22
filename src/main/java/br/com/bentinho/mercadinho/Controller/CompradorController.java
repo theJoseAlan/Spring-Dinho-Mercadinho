@@ -24,6 +24,7 @@ public class CompradorController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Comprador adicionar(@RequestBody Comprador comprador) {
+
         return compradorService.salvar(comprador);
     }
 
