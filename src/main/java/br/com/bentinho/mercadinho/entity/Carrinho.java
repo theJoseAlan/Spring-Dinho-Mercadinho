@@ -1,15 +1,15 @@
 package br.com.bentinho.mercadinho.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import java.util.List;
+import java.util.Objects;
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Carrinho {
 
@@ -21,32 +21,16 @@ public class Carrinho {
     @OneToOne
     private Comprador comprador;
 
-    @OneToMany
-    private List<Produto> produtos;
-
-
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Carrinho carrinho = (Carrinho) o;
+        return getId() != null && Objects.equals(getId(), carrinho.getId());
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
-
-    public Comprador getComprador() {
-        return comprador;
-    }
-
-    public void setComprador(Comprador comprador) {
-        this.comprador = comprador;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
 }
