@@ -18,7 +18,8 @@ public class Carrinho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @Embedded
     private Comprador comprador;
 
     @Override
