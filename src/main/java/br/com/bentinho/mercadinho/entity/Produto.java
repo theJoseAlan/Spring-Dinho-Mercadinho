@@ -1,13 +1,18 @@
 package br.com.bentinho.mercadinho.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Produto {
 
@@ -22,28 +27,8 @@ public class Produto {
 
     private Double valorUnitario;
 
+    public Produto(){
 
-    public String getNome() {
-        return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public Double getValorUnitario() {
-        return valorUnitario;
-    }
-
-    public void setValorUnitario(Double valorUnitario) {
-        this.valorUnitario = valorUnitario;
-    }
 }
