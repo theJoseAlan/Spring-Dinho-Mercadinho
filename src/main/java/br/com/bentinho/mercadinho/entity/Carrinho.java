@@ -21,8 +21,8 @@ public class Carrinho {
     @OneToOne(cascade = CascadeType.ALL)
     private Comprador comprador;
 
-    /*@OneToMany(cascade = CascadeType.ALL)
-    private List<Produto> produtos;*/
+    @OneToOne(cascade = CascadeType.ALL)
+    private Produto produto;
 
     @Override
     public boolean equals(Object o) {
