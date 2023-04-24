@@ -28,7 +28,7 @@ public class CarrinhoController {
         if (comprador.getId() != null) { // Verifica se a entidade Pessoa já possui ID atribuído
             comprador = compradorRepository.findById(comprador.getId()).orElse(null); // Recupera a entidade Pessoa do banco de dados
         }
-        carrinho.setComprador(comprador); // Associa a entidade Pessoa com Casa
+        carrinho.setComprador(comprador); // Seta a entidade Pessoa em Casa
 
         return carrinhoRepository.save(carrinho);
 
