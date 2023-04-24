@@ -19,8 +19,10 @@ public class Carrinho {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Embedded
     private Comprador comprador;
+
+    /*@OneToMany(cascade = CascadeType.ALL)
+    private List<Produto> produtos;*/
 
     @Override
     public boolean equals(Object o) {
