@@ -2,8 +2,10 @@ package br.com.bentinho.mercadinho.Controller;
 
 import br.com.bentinho.mercadinho.entity.Carrinho;
 import br.com.bentinho.mercadinho.entity.Comprador;
+import br.com.bentinho.mercadinho.entity.Produto;
 import br.com.bentinho.mercadinho.repository.CarrinhoRepository;
 import br.com.bentinho.mercadinho.repository.CompradorRepository;
+import br.com.bentinho.mercadinho.repository.ProdutoRepository;
 import br.com.bentinho.mercadinho.service.CarrinhoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,8 @@ public class CarrinhoController {
 
     private final CompradorRepository compradorRepository;
 
+    private final ProdutoRepository produtoRepository;
+
     @PostMapping
     public Carrinho criar(@RequestBody Carrinho carrinho){
 
@@ -29,6 +33,12 @@ public class CarrinhoController {
             comprador = compradorRepository.findById(comprador.getId()).orElse(null); // Recupera a entidade Pessoa do banco de dados
         }
         carrinho.setComprador(comprador); // Seta a entidade Pessoa em Casa
+
+        Produto produto = carrinho.getProduto();
+        if (produto.getId() != null) { // Verifica se a entidade Pessoa já possui ID atribuído
+            produto = produtoRepository.findById(produto.getId()).orElse(null); // Recupera a entidade Pessoa do banco de dados
+        }
+        carrinho.setProduto(produto); // Seta a entidade Pessoa em Casa
 
         return carrinhoRepository.save(carrinho);
 
