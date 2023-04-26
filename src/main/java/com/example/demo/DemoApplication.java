@@ -1,13 +1,13 @@
-package br.com.bentinho.mercadinho;
+package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BMApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BMApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }

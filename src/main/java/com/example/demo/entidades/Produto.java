@@ -1,14 +1,12 @@
-package br.com.bentinho.mercadinho.entity;
+package com.example.demo.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@Embeddable
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @Getter
@@ -17,18 +15,17 @@ import lombok.Setter;
 public class Produto {
 
     @EqualsAndHashCode.Include
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    public Long id;
 
-    private String nome;
+    public String nome;
 
-    private int quantidade;
-
-    private Double valorUnitario;
+    public String estado;
 
     public Produto(){
 
     }
+
 
 }

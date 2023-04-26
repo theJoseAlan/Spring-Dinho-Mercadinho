@@ -1,10 +1,9 @@
-package br.com.bentinho.mercadinho.repository;
+package com.example.demo.repository;
 
-import br.com.bentinho.mercadinho.entity.Carrinho;
+import com.example.demo.entidades.Carrinho;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarrinhoRepository extends JpaRepository<Carrinho, Long> {
-
 }

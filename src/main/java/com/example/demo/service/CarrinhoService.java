@@ -1,10 +1,12 @@
-package br.com.bentinho.mercadinho.service;
+package com.example.demo.service;
 
-import br.com.bentinho.mercadinho.entity.Carrinho;
-import br.com.bentinho.mercadinho.repository.CarrinhoRepository;
+import com.example.demo.entidades.Carrinho;
+import com.example.demo.repository.CarrinhoRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class CarrinhoService {
 
@@ -14,6 +16,5 @@ public class CarrinhoService {
     public Carrinho save(Carrinho carrinho){
         return carrinhoRepository.save(carrinho);
     }
-
 
 }
