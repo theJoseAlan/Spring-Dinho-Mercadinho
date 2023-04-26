@@ -1,10 +1,10 @@
-package br.com.bentinho.mercadinho;
+package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BMApplicationTests {
+class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
