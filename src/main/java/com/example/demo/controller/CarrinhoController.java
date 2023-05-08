@@ -44,26 +44,24 @@ public class CarrinhoController {
 
         if(produto.getId() != null){
             produto = produtoRepository.findById(produto.getId()).orElse(null);
+
         }
 
         carrinho.setProduto(produto);
 
+        assert produto != null;
+        Double valorTotal = produto.getValorUnitario()*produto.getQuantidade();
+
+        carrinho.setValorTotal(valorTotal);
+
+
         return carrinhoRepository.save(carrinho);
+
+
+
     }
 
-    /*@GetMapping("/exibe")
-    public List<CasaDto> casaList(){
 
-        List<Carrinho> casas = carrinhoRepository.findAll();
-        List<CasaDto> casaDtos = new ArrayList<>();
-
-        for(Carrinho casa : casas){
-            casaDtos.add(new CasaDto(casa));
-        }
-
-        return casaDtos;
-
-    }*/
 
     @GetMapping("/exibe")
     public List<Carrinho> casaList(){

@@ -21,7 +21,9 @@ public class Produto {
 
     public String nome;
 
-    public String estado;
+    public Double valorUnitario;
+
+    public int quantidade;
 
     public Produto(){
 

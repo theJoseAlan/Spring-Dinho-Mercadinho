@@ -23,6 +23,10 @@ public class Comprador {
 
     private String cpf;
 
+    private String endereco;
+
+    private String telefone;
+
     public Comprador(){
 
     }
