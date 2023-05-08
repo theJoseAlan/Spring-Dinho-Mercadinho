@@ -5,7 +5,7 @@ import com.example.demo.entidades.Produto;
 import com.example.demo.entidades.Comprador;
 import com.example.demo.repository.CarrinhoRepository;
 import com.example.demo.repository.ProdutoRepository;
-import com.example.demo.repository.PessoaRepository;
+import com.example.demo.repository.CompradorRepository;
 import com.example.demo.service.CarrinhoService;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class CarrinhoController {
     private CarrinhoRepository carrinhoRepository;
 
     private EntityManager entityManager;
-    private final PessoaRepository pessoaRepository;
+    private final CompradorRepository compradorRepository;
 
     private final ProdutoRepository produtoRepository;
 
@@ -36,7 +36,7 @@ public class CarrinhoController {
 
         Comprador comprador = carrinho.getComprador();
         if (comprador.getId() != null) { // Verifica se a entidade Comprador já possui ID atribuído
-            comprador = pessoaRepository.findById(comprador.getId()).orElse(null); // Recupera a entidade Comprador do banco de dados
+            comprador = compradorRepository.findById(comprador.getId()).orElse(null); // Recupera a entidade Comprador do banco de dados
         }
         carrinho.setComprador(comprador); // Associa a entidade Comprador com Carrinho
 
