@@ -16,7 +16,7 @@ public class Carrinho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String endereco;
+    private Double valorTotal;
 
     @OneToOne(cascade = CascadeType.ALL)
     @Embedded
@@ -25,5 +25,6 @@ public class Carrinho {
     @OneToOne(cascade = CascadeType.ALL)
     @Embedded
     private Produto produto;
+
 
 }
