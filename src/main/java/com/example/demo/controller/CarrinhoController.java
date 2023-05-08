@@ -6,8 +6,6 @@ import com.example.demo.entidades.Produto;
 import com.example.demo.repository.CarrinhoRepository;
 import com.example.demo.repository.CompradorRepository;
 import com.example.demo.repository.ProdutoRepository;
-import com.example.demo.service.CarrinhoService;
-import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,11 +18,10 @@ import java.util.Optional;
 @RequestMapping("/carrinho")
 public class CarrinhoController {
 
-    private CarrinhoService carrinhoService;
-
+    
     private CarrinhoRepository carrinhoRepository;
 
-    private EntityManager entityManager;
+
     private final CompradorRepository compradorRepository;
 
     private final ProdutoRepository produtoRepository;
@@ -65,7 +62,5 @@ public class CarrinhoController {
 
         return carrinhoRepository.findById(id);
     }
-
-    
 
 }
