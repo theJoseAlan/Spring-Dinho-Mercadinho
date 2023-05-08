@@ -54,7 +54,11 @@ public class CarrinhoController {
 
         carrinho.setValorTotal(valorTotal);
 
+
         return carrinhoRepository.save(carrinho);
+
+
+
     }
 
 
