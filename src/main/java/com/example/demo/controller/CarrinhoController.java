@@ -1,11 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.entidades.Carrinho;
-import com.example.demo.entidades.Produto;
 import com.example.demo.entidades.Comprador;
+import com.example.demo.entidades.Produto;
 import com.example.demo.repository.CarrinhoRepository;
-import com.example.demo.repository.ProdutoRepository;
 import com.example.demo.repository.CompradorRepository;
+import com.example.demo.repository.ProdutoRepository;
 import com.example.demo.service.CarrinhoService;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
@@ -13,11 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/casa")
+@RequestMapping("/carrinho")
 public class CarrinhoController {
 
     private CarrinhoService carrinhoService;
@@ -54,19 +54,18 @@ public class CarrinhoController {
 
         carrinho.setValorTotal(valorTotal);
 
-
         return carrinhoRepository.save(carrinho);
 
 
 
     }
 
+    @GetMapping("/{id}")
+    public Optional<Carrinho> exibeporId(@PathVariable Long id){
 
-
-    @GetMapping("/exibe")
-    public List<Carrinho> casaList(){
-
-        return carrinhoRepository.findAll();
+        return carrinhoRepository.findById(id);
     }
+
+    
 
 }
