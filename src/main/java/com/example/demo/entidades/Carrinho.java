@@ -1,5 +1,6 @@
 package com.example.demo.entidades;
 
+import com.example.demo.model.StatusCompra;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,9 @@ public class Carrinho {
     @OneToOne(cascade = CascadeType.ALL)
     @Embedded
     private Produto produto;
+
+    @Enumerated(EnumType.STRING)
+    private StatusCompra statusCompra;
 
 
 }

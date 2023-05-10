@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entidades.Carrinho;
 import com.example.demo.entidades.Comprador;
 import com.example.demo.entidades.Produto;
+import com.example.demo.model.StatusCompra;
 import com.example.demo.repository.CarrinhoRepository;
 import com.example.demo.repository.CompradorRepository;
 import com.example.demo.repository.ProdutoRepository;
@@ -51,9 +52,9 @@ public class CarrinhoController {
 
         carrinho.setValorTotal(valorTotal);
 
+        carrinho.setStatusCompra(StatusCompra.FINALIZADA);
+
         return carrinhoRepository.save(carrinho);
-
-
 
     }
 
