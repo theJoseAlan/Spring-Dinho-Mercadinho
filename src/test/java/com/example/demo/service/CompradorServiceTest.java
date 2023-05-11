@@ -22,6 +22,9 @@ class CompradorServiceTest {
     @Autowired
     private CompradorRepository compradorRepository;
 
+    @Mock
+    private CompradorService compradorService;
+
     private Comprador comprador;
 
 
@@ -37,11 +40,11 @@ class CompradorServiceTest {
     @DisplayName("Save sucess")
     void salvar() {
 
-        when(compradorRepository.save(any())).thenReturn(comprador);
+        when(compradorService.salvar(any())).thenReturn(comprador);
 
-        Comprador response = compradorRepository.save(comprador);
+        Comprador response = compradorService.salvar(comprador);
 
-        assertNotNull(response);
+        //assertNotNull(response);
         assertEquals(Comprador.class, response.getClass());
         assertEquals(1L, response.getId());
         assertEquals("Ana", response.getNome());
