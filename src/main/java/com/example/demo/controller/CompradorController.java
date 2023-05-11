@@ -29,8 +29,9 @@ public class CompradorController {
     }
 
     @GetMapping("/exibir")
-    public List<Comprador> exibir(){
-        return compradorRepository.findAll();
+    public ResponseEntity<List<Comprador>> exibir(){
+
+        return ResponseEntity.ok().body(compradorRepository.findAll());
     }
 
 
