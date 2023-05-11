@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -36,8 +35,9 @@ public class CompradorController {
 
 
     @GetMapping("/{id}")
-    public Optional<Comprador> exibeporId(@PathVariable Long id){
-        return compradorRepository.findById(id);
+    public ResponseEntity<Comprador> exibeporId(@PathVariable Long id){
+
+        return ResponseEntity.ok().body(compradorRepository.findById(id).get());
     }
 
     @PutMapping("{id}")
