@@ -22,8 +22,11 @@ public class CompradorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Comprador criar(@RequestBody Comprador comprador){
-       return compradorService.salvar(comprador);
+    public ResponseEntity<Comprador> criar(@RequestBody Comprador comprador){
+
+        Comprador compradornovo = compradorService.salvar(comprador);
+
+       return ResponseEntity.ok(compradornovo);
     }
 
     @GetMapping("/exibir")
