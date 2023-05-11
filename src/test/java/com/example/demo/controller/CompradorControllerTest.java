@@ -14,6 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -63,18 +66,51 @@ class CompradorControllerTest {
         assertEquals(TELEFONE, responseEntity.getBody().getTelefone());
         assertEquals(ENDERECO, responseEntity.getBody().getEndereco());
 
-
-
-
-
     }
 
     @Test
+    @DisplayName("Find All sucess")
     void exibir() {
+        when(compradorRepository.findAll()).thenReturn(List.of(comprador));
+
+        ResponseEntity<List<Comprador>> response = compradorController.exibir();
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+
+        //Verificando se o primeiro objeto da lista é uma instância da classe Comprador
+        assertEquals(Comprador.class, response.getBody().get(0).getClass());
+
+        //Já que se trata de uma lista, é necessário verificar os atributos
+        //do objeto pelo indice associado a ele
+        assertEquals(ID, response.getBody().get(0).getId());
+        assertEquals(NOME, response.getBody().get(0).getNome());
+        assertEquals(CPF, response.getBody().get(0).getCpf());
+        assertEquals(TELEFONE, response.getBody().get(0).getTelefone());
+        assertEquals(ENDERECO, response.getBody().get(0).getEndereco());
+
     }
 
     @Test
+    @DisplayName("FindById sucess")
     void exibeporId() {
+        when(compradorRepository.findById(any())).thenReturn(Optional.ofNullable(comprador));
+
+        ResponseEntity<Comprador> response = compradorController.exibeporId(ID);
+
+        //Validações
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(ResponseEntity.class, response.getClass());
+
+        assertEquals(Comprador.class, response.getBody().getClass());
+
+        assertEquals(ID, response.getBody().getId());
+        assertEquals(NOME, response.getBody().getNome());
+        assertEquals(CPF, response.getBody().getCpf());
+        assertEquals(ENDERECO, response.getBody().getEndereco());
+        assertEquals(TELEFONE, response.getBody().getTelefone());
+
     }
 
     @Test
