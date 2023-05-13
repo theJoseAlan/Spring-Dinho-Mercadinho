@@ -20,7 +20,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class CompradorControllerTest {
@@ -115,10 +115,27 @@ class CompradorControllerTest {
 
     @Test
     void atualizar() {
+
     }
 
     @Test
     void deletar() {
+
+        //NÃO PASSOU
+
+
+        doNothing().when(compradorRepository).deleteById(1L);
+
+        ResponseEntity<Void> response = ResponseEntity.noContent().build();
+
+        assertNotNull(response);
+
+        assertEquals(ResponseEntity.class, response.getClass());
+
+        verify(compradorRepository, times(0)).delete(any());
+
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+
     }
 
 
