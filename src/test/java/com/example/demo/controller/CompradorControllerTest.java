@@ -114,19 +114,35 @@ class CompradorControllerTest {
     }
 
     @Test
+    @DisplayName("Update sucess")
     void atualizar() {
 
+        when(compradorService.salvar(comprador)).thenReturn(comprador);
+
+        ResponseEntity<Comprador> response = compradorController.atualizar(ID, comprador);
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(Comprador.class, response.getBody().getClass());
+
+        assertEquals(ID, response.getBody().getId());
+        assertEquals(NOME, response.getBody().getNome());
+        assertEquals(CPF, response.getBody().getCpf());
+        assertEquals(ENDERECO, response.getBody().getEndereco());
+        assertEquals(TELEFONE, response.getBody().getTelefone());
     }
 
     @Test
+    @DisplayName("Delete sucess")
     void deletar() {
-
-        //NÃO PASSOU
-
 
         doNothing().when(compradorRepository).deleteById(1L);
 
-        ResponseEntity<Void> response = ResponseEntity.noContent().build();
+        ResponseEntity<Void> response = compradorController.deletar(ID);
 
         assertNotNull(response);
 
