@@ -42,11 +42,14 @@ public class CompradorController {
     }
 
     @PutMapping("{id}")
-    public Comprador atualizar(@PathVariable Long id, @RequestBody Comprador comprador){
+    public ResponseEntity<Comprador> atualizar(@PathVariable Long id, @RequestBody Comprador comprador){
 
         comprador.setId(id);
 
-        return compradorService.salvar(comprador);
+        compradorService.salvar(comprador);
+
+        return ResponseEntity.ok().body(comprador);
+
 
     }
 
