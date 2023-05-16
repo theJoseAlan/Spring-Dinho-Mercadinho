@@ -7,9 +7,10 @@ import com.example.demo.model.StatusCompra;
 import com.example.demo.repository.CarrinhoRepository;
 import com.example.demo.repository.CompradorRepository;
 import com.example.demo.repository.ProdutoRepository;
+import com.example.demo.service.CarrinhoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -27,10 +28,12 @@ public class CarrinhoController {
 
     private final ProdutoRepository produtoRepository;
 
-    @Transactional
+    private CarrinhoService carrinhoService;
+
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Carrinho criar(@RequestBody Carrinho carrinho){
+    public ResponseEntity<Carrinho> criar(@RequestBody Carrinho carrinho){
 
         Comprador comprador = carrinho.getComprador();
         if (comprador.getId() != null) { // Verifica se a entidade Comprador já possui ID atribuído
@@ -54,7 +57,11 @@ public class CarrinhoController {
 
         carrinho.setStatusCompra(StatusCompra.FINALIZADA);
 
-        return carrinhoRepository.save(carrinho);
+        carrinhoService.save(carrinho);
+
+        return ResponseEntity.ok(carrinho);
+
+        //return carrinhoRepository.save(carrinho);
 
     }
 
