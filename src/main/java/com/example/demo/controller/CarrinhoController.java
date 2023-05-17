@@ -61,8 +61,6 @@ public class CarrinhoController {
 
         return ResponseEntity.ok(carrinho);
 
-        //return carrinhoRepository.save(carrinho);
-
     }
 
     @GetMapping("/{id}")
