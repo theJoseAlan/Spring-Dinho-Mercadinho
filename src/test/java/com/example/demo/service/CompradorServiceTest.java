@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -47,6 +48,16 @@ class CompradorServiceTest {
 
 
         assertEquals(comprador, resultado);
+
+        assertNotNull(ID);
+
+        assertEquals(Comprador.class, resultado.getClass());
+
+        assertEquals(ID, resultado.getId());
+        assertEquals(NOME, resultado.getNome());
+        assertEquals(CPF, resultado.getCpf());
+        assertEquals(ENDERECO, resultado.getEndereco());
+        assertEquals(TELEFONE, resultado.getTelefone());
 
     }
 
