@@ -3,62 +3,56 @@ package com.example.demo.service;
 import com.example.demo.entidades.Comprador;
 import com.example.demo.repository.CompradorRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class CompradorServiceTest {
 
-    @Mock
-    @Autowired
-    private CompradorRepository compradorRepository;
+    public static final long ID = 1L;
+    public static final String NOME = "Ana";
+    public static final String CPF = "040320";
+    public static final String ENDERECO = "Endereco";
+    public static final String TELEFONE = "12345";
+
 
     @Mock
+    private CompradorRepository compradorRepository;
+
+    @InjectMocks
     private CompradorService compradorService;
 
     private Comprador comprador;
 
-
     @BeforeEach
-    void setUp(){
+    void setUp() {
         MockitoAnnotations.openMocks(this);
-
         startComprador();
     }
 
 
     @Test
-    @DisplayName("Save sucess")
-    void salvar() {
+    void testSalvar() {
 
-        when(compradorService.salvar(any())).thenReturn(comprador);
-
-        Comprador response = compradorService.salvar(comprador);
-
-        //assertNotNull(response);
-        assertEquals(Comprador.class, response.getClass());
-        assertEquals(1L, response.getId());
-        assertEquals("Ana", response.getNome());
-        assertEquals("040320", response.getCpf());
-        assertEquals("Endereco", response.getEndereco());
-        assertEquals("12345", response.getTelefone());
+        when(compradorRepository.save(comprador)).thenReturn(comprador);
 
 
+        Comprador resultado = compradorService.salvar(comprador);
+
+
+        assertEquals(comprador, resultado);
 
     }
 
     private void startComprador(){
 
-        comprador = new Comprador(1L, "Ana", "040320", "Endereco", "12345");
+        comprador = new Comprador(ID, NOME, CPF, ENDERECO, TELEFONE);
 
     }
 
