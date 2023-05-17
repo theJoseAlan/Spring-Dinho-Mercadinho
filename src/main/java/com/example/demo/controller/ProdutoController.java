@@ -36,8 +36,10 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Produto> exibe(@PathVariable Long id){
-        return produtoRepository.findById(id);
+    public ResponseEntity<Optional<Produto>> exibe(@PathVariable Long id){
+
+        return ResponseEntity.ok().body(produtoRepository.findById(id));
+
     }
 
 }
