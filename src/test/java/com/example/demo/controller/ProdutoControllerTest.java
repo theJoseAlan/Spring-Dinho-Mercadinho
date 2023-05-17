@@ -80,6 +80,8 @@ class ProdutoControllerTest {
         assertNotNull(response);
         assertNotNull(response.getBody());
 
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+
         assertEquals(Optional.class, response.getBody().getClass());
 
         assertEquals(ResponseEntity.class, response.getClass());
