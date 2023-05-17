@@ -71,9 +71,9 @@ public class CarrinhoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Carrinho> exibeporId(@PathVariable Long id){
+    public ResponseEntity<Optional<Carrinho>> exibeporId(@PathVariable Long id){
 
-        return carrinhoRepository.findById(id);
+        return ResponseEntity.ok().body(carrinhoRepository.findById(id));
     }
 
 }
