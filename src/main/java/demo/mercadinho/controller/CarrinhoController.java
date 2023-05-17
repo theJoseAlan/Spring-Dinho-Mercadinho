@@ -25,7 +25,6 @@ public class CarrinhoController {
     
     private CarrinhoRepository carrinhoRepository;
 
-
     private final CompradorRepository compradorRepository;
 
     private final ProdutoRepository produtoRepository;
@@ -53,6 +52,7 @@ public class CarrinhoController {
         carrinho.setProduto(produto);
 
         assert produto != null;
+
         Double valorTotal = produto.getValorUnitario()*produto.getQuantidade();
 
         carrinho.setValorTotal(valorTotal);
