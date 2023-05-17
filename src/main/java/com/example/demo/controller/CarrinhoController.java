@@ -12,7 +12,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -57,9 +59,14 @@ public class CarrinhoController {
 
         carrinho.setStatusCompra(StatusCompra.FINALIZADA);
 
-        carrinhoService.save(carrinho);
+        Carrinho carrinhoSalvo = carrinhoService.save(carrinho);
 
-        return ResponseEntity.ok(carrinho);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(carrinhoSalvo.getId())
+                .toUri();
+        
+        return ResponseEntity.created(uri).body(carrinhoSalvo);
 
     }
 
