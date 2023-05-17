@@ -44,12 +44,6 @@ class ProdutoServiceTest {
 
     }
 
-    @Test
-    @DisplayName("Save error")
-    void saveError(){
-
-    }
-
     private void startProduto(){
         produto = new Produto(1L, "Bala", 0.5, 10);
     }
