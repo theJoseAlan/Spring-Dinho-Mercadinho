@@ -57,6 +57,7 @@ public class CarrinhoController {
 
         carrinho.setValorTotal(valorTotal);
 
+
         carrinho.setStatusCompra(StatusCompra.FINALIZADA);
 
         Carrinho carrinhoSalvo = carrinhoService.save(carrinho);
