@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package demo.mercadinho.service;
 
-import com.example.demo.entidades.Carrinho;
-import com.example.demo.repository.CarrinhoRepository;
+import demo.mercadinho.entidades.Carrinho;
+import demo.mercadinho.repository.CarrinhoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

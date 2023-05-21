@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package demo.mercadinho.service;
 
-import com.example.demo.entidades.Comprador;
-import com.example.demo.repository.PessoaRepository;
+import demo.mercadinho.entidades.Comprador;
+import demo.mercadinho.repository.CompradorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 public class CompradorService {
 
     @Autowired
-    private PessoaRepository pessoaRepository;
+    private CompradorRepository compradorRepository;
 
     public Comprador salvar(Comprador comprador){
-        return pessoaRepository.save(comprador);
+        return compradorRepository.save(comprador);
     }
 
 }

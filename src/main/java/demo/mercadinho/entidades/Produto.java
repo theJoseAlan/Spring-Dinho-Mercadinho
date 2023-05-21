@@ -1,4 +1,4 @@
-package com.example.demo.entidades;
+package demo.mercadinho.entidades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

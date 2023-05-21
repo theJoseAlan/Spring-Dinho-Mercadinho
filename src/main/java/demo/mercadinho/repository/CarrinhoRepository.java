@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package demo.mercadinho.repository;
 
-import com.example.demo.entidades.Carrinho;
+import demo.mercadinho.entidades.Carrinho;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
