@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/cidade")
+@RequestMapping("/produto")
 public class ProdutoController {
 
     private ProdutoService cidadeService;
