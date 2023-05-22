@@ -25,7 +25,7 @@ public class CompradorController {
 
         Comprador compradornovo = compradorService.salvar(comprador);
 
-       return ResponseEntity.ok(compradornovo);
+        return ResponseEntity.ok(compradornovo);
     }
 
     @GetMapping("/exibir")
