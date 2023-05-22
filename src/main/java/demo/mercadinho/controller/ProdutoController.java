@@ -22,6 +22,11 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<Produto> adcionar(@RequestBody Produto produto){
+
+        Double valorTotal = produto.getValorUnitario()* produto.getQuantidade();
+
+        produto.setValorTotal(valorTotal);
+
         Produto produtoSalvo = cidadeService.save(produto);
 
         // Cria a URI do recurso criado

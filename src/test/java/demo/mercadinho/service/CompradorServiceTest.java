@@ -6,8 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -41,11 +44,9 @@ class CompradorServiceTest {
     @Test
     void testSalvar() {
 
-        when(compradorRepository.save(comprador)).thenReturn(comprador);
-
+        when(compradorRepository.save(Mockito.any())).thenReturn(comprador);
 
         Comprador resultado = compradorService.salvar(comprador);
-
 
         assertEquals(comprador, resultado);
 
@@ -61,7 +62,25 @@ class CompradorServiceTest {
 
     }
 
-    private void startComprador(){
+    @Test
+    void buscar(){
+        when(compradorRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(comprador));
+
+        Comprador resultado = compradorService.buscar(comprador.getId());
+
+        assertEquals(Comprador.class, resultado.getClass());
+
+        assertNotNull(resultado);
+        assertNotNull(resultado.getClass());
+        assertEquals(ID, resultado.getId());
+        assertEquals(NOME, resultado.getNome());
+        assertEquals(ENDERECO, resultado.getEndereco());
+        assertEquals(TELEFONE, resultado.getTelefone());
+        assertEquals(CPF, resultado.getCpf());
+
+    }
+
+    void startComprador(){
 
         comprador = new Comprador(ID, NOME, CPF, ENDERECO, TELEFONE);
 

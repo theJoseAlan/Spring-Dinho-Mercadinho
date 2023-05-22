@@ -3,77 +3,136 @@ package demo.mercadinho.controller;
 import demo.mercadinho.entidades.Carrinho;
 import demo.mercadinho.entidades.Comprador;
 import demo.mercadinho.entidades.Produto;
-import demo.mercadinho.model.StatusCompra;
 import demo.mercadinho.repository.CarrinhoRepository;
-import demo.mercadinho.repository.CompradorRepository;
-import demo.mercadinho.repository.ProdutoRepository;
 import demo.mercadinho.service.CarrinhoService;
-import org.junit.jupiter.api.Assertions;
+import demo.mercadinho.service.CompradorService;
+import demo.mercadinho.service.ProdutoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
 class CarrinhoControllerTest {
-
     @Mock
     private CarrinhoRepository carrinhoRepository;
 
     @Mock
-    private CompradorRepository compradorRepository;
-
-    @Mock
-    private ProdutoRepository produtoRepository;
-
-    @Mock
     private CarrinhoService carrinhoService;
+
+    @Mock
+    private CompradorService compradorService;
+
+    @Mock
+    private ProdutoService produtoService;
 
     @InjectMocks
     private CarrinhoController carrinhoController;
 
     private Carrinho carrinho;
 
+    private Produto produto;
+
+    private Comprador comprador;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+
         startCarrinho();
     }
 
+
     @Test
     void criar() {
-        when(carrinhoRepository.save(carrinho)).thenReturn(carrinho);
+        Mockito.when(carrinhoService.criar(Mockito.any())).thenReturn(carrinho);
 
         ResponseEntity<Carrinho> response = carrinhoController.criar(carrinho);
 
-        Assertions.assertNotNull(response);
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertNotNull(response.getBody().getId());
+        assertNotNull(response.getBody().getProduto());
+        assertNotNull(response.getBody().getComprador());
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(Carrinho.class, response.getBody().getClass());
+        assertEquals(Produto.class, response.getBody().getProduto().getClass());
+        assertEquals(Comprador.class, response.getBody().getComprador().getClass());
+
+        assertEquals(1L, response.getBody().getComprador().getId());
+        assertEquals("Ana", response.getBody().getComprador().getNome());
+        assertEquals("1234", response.getBody().getComprador().getCpf());
+        assertEquals("Endereco", response.getBody().getComprador().getEndereco());
+        assertEquals("4321", response.getBody().getComprador().getTelefone());
+
+        assertEquals(1L, response.getBody().getProduto().getId());
+        assertEquals("Arroz", response.getBody().getProduto().getNome());
+        assertEquals(3.50, response.getBody().getProduto().getValorUnitario());
+        assertEquals(2, response.getBody().getProduto().getQuantidade());
+        assertEquals(7, response.getBody().getProduto().getValorTotal());
+
+        Double total = response.getBody().getProduto().getValorUnitario()*response.getBody().getProduto().getQuantidade();
+
+        assertEquals(total, response.getBody().getProduto().getValorTotal());
+
+
     }
 
     @Test
-    void exibeporId() {
-        when(carrinhoRepository.findById(1L)).thenReturn(Optional.of(carrinho));
+    void exibir() {
+        Mockito.when(carrinhoRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(carrinho));
 
-        ResponseEntity<Optional<Carrinho>> response = carrinhoController.exibeporId(1L);
+        ResponseEntity<Optional<Carrinho>> response = carrinhoController.exibir(1L);
 
-        Assertions.assertNotNull(response);
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(ResponseEntity.class, response.getClass());
+
+        assertEquals(Carrinho.class, response.getBody().get().getClass());
+        assertNotNull(response.getBody().get().getProduto());
+        assertNotNull(response.getBody().get().getComprador());
+
+        assertNotNull(response.getBody().get().getId());
+        assertNotNull(response.getBody().get().getComprador().getId());
+        assertNotNull(response.getBody().get().getProduto().getId());
+
+        assertEquals(Comprador.class, response.getBody().get().getComprador().getClass());
+        assertEquals(Produto.class, response.getBody().get().getProduto().getClass());
+
+        assertEquals(1L, response.getBody().get().getComprador().getId());
+        assertEquals("Ana", response.getBody().get().getComprador().getNome());
+        assertEquals("1234", response.getBody().get().getComprador().getCpf());
+        assertEquals("Endereco", response.getBody().get().getComprador().getEndereco());
+        assertEquals("4321", response.getBody().get().getComprador().getTelefone());
+
+        assertEquals(1L, response.getBody().get().getProduto().getId());
+        assertEquals("Arroz", response.getBody().get().getProduto().getNome());
+        assertEquals(3.50, response.getBody().get().getProduto().getValorUnitario());
+        assertEquals(2, response.getBody().get().getProduto().getQuantidade());
+        assertEquals(7, response.getBody().get().getProduto().getValorTotal());
+
+        Double total = response.getBody().get().getProduto().getValorUnitario()*response.getBody().get().getProduto().getQuantidade();
+
+        assertEquals(total, response.getBody().get().getProduto().getValorTotal());
+
+
     }
 
     void startCarrinho() {
-        carrinho = new Carrinho();
-        Produto produto = new Produto(1L, "Arroz", 10.00, 2);
-        Comprador comprador = new Comprador(1L, "Ana", "123", "Rua", "321");
+        comprador = new Comprador(1L, "Ana", "1234", "Endereco", "4321");
+        produto = new Produto(1L, "Arroz", 3.50, 2, 7.0);
 
-        carrinho.setId(1L);
-        carrinho.setProduto(produto);
-        carrinho.setComprador(comprador);
-        carrinho.setValorTotal(produto.getValorUnitario() * produto.getQuantidade());
-        carrinho.setStatusCompra(StatusCompra.FINALIZADA);
+        carrinho = new Carrinho(1L, comprador, produto);
     }
 }

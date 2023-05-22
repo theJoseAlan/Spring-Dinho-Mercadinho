@@ -1,29 +1,31 @@
 package demo.mercadinho.entidades;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Embeddable
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
 public class Produto {
 
-    @EqualsAndHashCode.Include
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     public Long id;
 
-    public String nome;
+    private String nome;
 
-    public Double valorUnitario;
+    private Double valorUnitario;
 
-    public int quantidade;
+    private int quantidade;
+
+    private Double valorTotal;
 
     public Produto(){
 

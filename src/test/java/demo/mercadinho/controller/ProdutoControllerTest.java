@@ -15,8 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -25,6 +24,7 @@ class ProdutoControllerTest {
 
     public static final long ID = 1L;
     public static final String NOME = "Balinha";
+    public static final double VALOR_TOTAL = 2;
     public static final double VALOR_UNITARIO = 0.10;
     public static final int QUANTIDADE = 20;
     @Mock
@@ -65,9 +65,7 @@ class ProdutoControllerTest {
         assertEquals(VALOR_UNITARIO, response.getBody().getValorUnitario());
         assertEquals(QUANTIDADE, response.getBody().getQuantidade());
 
-        double valorTotal = response.getBody().getQuantidade()*response.getBody().getValorUnitario();
-
-        assertEquals(QUANTIDADE*VALOR_UNITARIO, valorTotal);
+        assertEquals(QUANTIDADE*VALOR_UNITARIO, response.getBody().getValorTotal());
 
     }
 
@@ -91,14 +89,13 @@ class ProdutoControllerTest {
         assertEquals(VALOR_UNITARIO, response.getBody().get().getValorUnitario());
         assertEquals(QUANTIDADE, response.getBody().get().getQuantidade());
 
-        double valorTotal = response.getBody().get().getQuantidade()*response.getBody().get().getValorUnitario();
-
-        assertEquals(QUANTIDADE*VALOR_UNITARIO, valorTotal);
+        assertEquals(QUANTIDADE*VALOR_UNITARIO, response.getBody().get().getValorTotal());
 
 
     }
 
+
     private void startProduto(){
-        produto = new Produto(ID, NOME, VALOR_UNITARIO, QUANTIDADE);
+        produto = new Produto(ID, NOME, VALOR_UNITARIO, QUANTIDADE, VALOR_TOTAL);
     }
 }
