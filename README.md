@@ -10,7 +10,7 @@
 * <img align="center" alt="Alan-Spring" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"> Spring<br>
 * <img align="center" alt="Alan-Maven" height="30" width="40" src="https://user-images.githubusercontent.com/117518719/216434196-b63f5ea3-057f-42e5-abfc-b35deade0635.png"> Maven<br>
 * <img align="center" alt="Alan-Postman" height="30" width="40" src="https://user-images.githubusercontent.com/117518719/216434927-59ceed3f-b838-42b3-845e-1975e2cb08a0.svg"> Posman<br>
-* <img align="center" alt="Alan-JUnit" height="30" width="30" src="https://github.com/theJoseAlan/Spring-Dinho-Mercadinho/assets/117518719/8c7edfd2-1964-4572-bb86-ad137f2d1b08.png"> JUnit 5 (Mockito)<br>
+* <img align="center" alt="Alan-JUnit" height="30" width="30" JUnit 5 (Mockito)<br>
 * <img align="center" alt="Alan-Intellij" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg"> Intellij<br>
 
 
