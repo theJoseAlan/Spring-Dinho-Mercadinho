@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class ProdutoService {
@@ -21,5 +23,9 @@ public class ProdutoService {
 
     public Produto buscar(Long produtoId){
         return produtoRepository.findById(produtoId).orElseThrow();
+    }
+
+    public List<Produto> listaProdutos(){
+        return produtoRepository.findAll();
     }
 }
