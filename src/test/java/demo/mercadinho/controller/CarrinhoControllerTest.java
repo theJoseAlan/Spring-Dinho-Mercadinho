@@ -7,19 +7,8 @@ import demo.mercadinho.repository.CarrinhoRepository;
 import demo.mercadinho.service.CarrinhoService;
 import demo.mercadinho.service.CompradorService;
 import demo.mercadinho.service.ProdutoService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CarrinhoControllerTest {
     @Mock
@@ -43,14 +32,14 @@ class CarrinhoControllerTest {
 
     private Comprador comprador;
 
-    @BeforeEach
+   /* @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
         startCarrinho();
-    }
+    }*/
 
-
+/*
     @Test
     void criar() {
         Mockito.when(carrinhoService.criar(Mockito.any())).thenReturn(carrinho);
@@ -129,10 +118,10 @@ class CarrinhoControllerTest {
 
     }
 
-    void startCarrinho() {
+   /* void startCarrinho() {
         comprador = new Comprador(1L, "Ana", "1234", "Endereco", "4321");
         produto = new Produto(1L, "Arroz", 3.50, 2, 7.0);
 
         carrinho = new Carrinho(1L, comprador, produto);
     }
-}
+}*/

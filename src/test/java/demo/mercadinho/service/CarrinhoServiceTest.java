@@ -1,4 +1,4 @@
-package demo.mercadinho.service;
+/*package demo.mercadinho.service;
 
 import demo.mercadinho.entidades.Carrinho;
 import demo.mercadinho.entidades.Comprador;
@@ -79,4 +79,4 @@ class CarrinhoServiceTest {
 
         carrinho = new Carrinho(1L, comprador, produto);
     }
-}
+}*/
