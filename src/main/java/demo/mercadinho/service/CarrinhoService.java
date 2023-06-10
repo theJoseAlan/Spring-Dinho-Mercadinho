@@ -27,10 +27,11 @@ public class CarrinhoService {
     public Carrinho criar(Carrinho carrinho){
         Comprador comprador = compradorService.buscar(carrinho.getComprador().getId());
 
-        Produto produto = produtoService.buscar(carrinho.getProduto().getId());
+        List<Produto> produtos = produtoService.listaProdutos();
 
         carrinho.setComprador(comprador);
-        carrinho.setProduto(produto);
+        carrinho.setProdutos(produtos);
+
         return carrinhoRepository.save(carrinho);
     }
 
