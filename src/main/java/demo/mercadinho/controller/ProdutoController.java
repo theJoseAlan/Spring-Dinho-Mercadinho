@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequestMapping("/produto")
 public class ProdutoController {
 
-    private ProdutoService cidadeService;
+    private ProdutoService produtoService;
 
     private ProdutoRepository produtoRepository;
 
@@ -27,7 +27,7 @@ public class ProdutoController {
 
         produto.setValorTotal(valorTotal);
 
-        Produto produtoSalvo = cidadeService.save(produto);
+        Produto produtoSalvo = produtoService.save(produto);
 
         // Cria a URI do recurso criado
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -45,6 +45,14 @@ public class ProdutoController {
 
         return ResponseEntity.ok().body(produtoRepository.findById(id));
 
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id){
+
+        produtoService.deletaProduto(id);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

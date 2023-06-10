@@ -28,4 +28,8 @@ public class ProdutoService {
     public List<Produto> listaProdutos(){
         return produtoRepository.findAll();
     }
+
+    public void deletaProduto(Long id){
+        produtoRepository.deleteById(id);
+    }
 }
