@@ -2,6 +2,8 @@ package demo.mercadinho.entidades.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class CarrinhoDto {
 
@@ -11,6 +13,6 @@ public class CarrinhoDto {
 
     private String enderecoComprador;
 
-    private Double valorTotal;
+    private List<String> nomeProdutos;
 
 }
