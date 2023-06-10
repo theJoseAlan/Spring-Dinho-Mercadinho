@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @AllArgsConstructor
 @Service
 public class CarrinhoService {
@@ -29,6 +32,14 @@ public class CarrinhoService {
         carrinho.setComprador(comprador);
         carrinho.setProduto(produto);
         return carrinhoRepository.save(carrinho);
+    }
+
+    public Optional<Carrinho> buscarPorId(Long id){
+        return carrinhoRepository.findById(id);
+    }
+
+    public List<Carrinho> listAll(){
+        return carrinhoRepository.findAll();
     }
 
 }
