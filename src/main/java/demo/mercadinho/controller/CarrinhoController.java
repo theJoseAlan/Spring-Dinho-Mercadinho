@@ -1,12 +1,15 @@
 package demo.mercadinho.controller;
 
 import demo.mercadinho.entidades.Carrinho;
+import demo.mercadinho.entidades.dto.CarrinhoDto;
+import demo.mercadinho.mapper.CarrinhoMapper;
 import demo.mercadinho.repository.CarrinhoRepository;
 import demo.mercadinho.service.CarrinhoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -27,8 +30,20 @@ public class CarrinhoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Carrinho>> exibir(@PathVariable Long id){
-        return ResponseEntity.ok().body(carrinhoRepository.findById(id));
+    public ResponseEntity<Optional<Object>> exibir(@PathVariable Long id){
+
+        Optional<Carrinho> carrinho = null;
+        carrinho= carrinhoService.buscarPorId(id);
+
+
+        CarrinhoDto carrinhoDto = CarrinhoMapper.carrinhoToCarrinhoDto(carrinho.get());
+
+        return ResponseEntity.ok().body(Optional.of(carrinhoDto));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Carrinho>> exibirTodos(){
+        return ResponseEntity.ok().body(carrinhoService.listAll());
     }
 
 }
