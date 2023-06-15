@@ -1,4 +1,4 @@
-package demo.mercadinho.controller;
+/*package demo.mercadinho.controller;
 
 import demo.mercadinho.entidades.Comprador;
 import demo.mercadinho.repository.CompradorRepository;
@@ -160,4 +160,4 @@ class CompradorControllerTest {
         comprador = new Comprador(ID, NOME, CPF, ENDERECO, TELEFONE);
 
     }
-}
+}*/

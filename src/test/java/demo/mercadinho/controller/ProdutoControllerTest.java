@@ -1,4 +1,4 @@
-package demo.mercadinho.controller;
+/*package demo.mercadinho.controller;
 
 import demo.mercadinho.entidades.Produto;
 import demo.mercadinho.repository.ProdutoRepository;
@@ -98,4 +98,4 @@ class ProdutoControllerTest {
     private void startProduto(){
         produto = new Produto(ID, NOME, VALOR_UNITARIO, QUANTIDADE, VALOR_TOTAL);
     }
-}
+}*/

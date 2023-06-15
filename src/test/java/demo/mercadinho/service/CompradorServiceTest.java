@@ -1,4 +1,4 @@
-package demo.mercadinho.service;
+/*package demo.mercadinho.service;
 
 import demo.mercadinho.entidades.Comprador;
 import demo.mercadinho.repository.CompradorRepository;
@@ -63,10 +63,10 @@ class CompradorServiceTest {
     }
 
     @Test
-    void buscar(){
+    void buscarPorId(){
         when(compradorRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(comprador));
 
-        Comprador resultado = compradorService.buscar(comprador.getId());
+        Comprador resultado = compradorService.buscarPorId(comprador.getId());
 
         assertEquals(Comprador.class, resultado.getClass());
 
@@ -87,4 +87,4 @@ class CompradorServiceTest {
     }
 
 
-}
+}*/

@@ -46,10 +46,10 @@ class CarrinhoServiceTest {
     @Test
     void criar() {
         Mockito.when(carrinhoRepository.save(Mockito.any())).thenReturn(carrinho);
-        Mockito.when(compradorService.buscar(Mockito.anyLong())).thenReturn(comprador);
+        Mockito.when(compradorService.buscarPorId(Mockito.anyLong())).thenReturn(comprador);
 
         Produto produto = carrinho.getProduto();
-        Mockito.when(produtoService.buscar(Mockito.anyLong())).thenReturn(produto);
+        Mockito.when(produtoService.buscarPorId(Mockito.anyLong())).thenReturn(produto);
 
         Carrinho resposta = carrinhoService.criar(carrinho);
 
