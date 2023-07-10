@@ -22,7 +22,7 @@ Ao criar um produto e um comprador, eles serão adicionados em no Carrinho. Assi
 
 ## ⚙️ Operações
 * Comprador: Criar (Post), Listar todos (Get), Obter por id (Get), Atualizar (Put) e deletar por id (Delete)
-* Produto: Criar (Post), Obter por id (Get)
+* Produto: Criar (Post), Listar (Get)
 * Carrinho: Criar (Post), Obter por id (Get)
 
 ## 🌫 Camadas (Pacotes)
