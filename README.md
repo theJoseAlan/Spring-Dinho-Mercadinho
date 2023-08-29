@@ -76,6 +76,10 @@ Veja abaixo um exemplo de teste do método create da classe Carrinho:
 
     }
     
+Print da criação de um comprador no postman
+
+![postman](https://github.com/theJoseAlan/Spring-Dinho-Mercadinho/assets/117518719/c36e7961-18d5-458b-ba3c-8a939c75c81c)
+
 Perceba que apenas o teste deste método já cobre uma boa parte do código: Testa os atributos das duas classes associadas ao carrinho (Comprador e Produto)
 e verifica se as duas não estão nulas. Além disso, a resposta da requisição HTTP também é testada, isso garante que não retorne uma resposta diferente
 da que fio configurada no método POST em controller. É importante que cada teste dentro dos Assertions seja feito com muito cuidado e atenção para garantir
